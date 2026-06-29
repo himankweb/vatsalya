@@ -1,1735 +1,1346 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swastik Library - A Quiet Space for Learning and Success</title>
-    <!-- Google Fonts for premium typography -->
+    <title>Vatsalya Play School | Nurturing Early Childhood Education</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Established in 2017, Vatsalya Play School in Rewari provides a safe, caring, and premium childhood development environment. Playgroup, Nursery, LKG, UKG.">
+    <meta name="keywords" content="Vatsalya Play School, Preschool Rewari, Playgroup, Early Childhood Education, Nursery Rewari, Haryana pre-schools">
+    <meta property="og:title" content="Vatsalya Play School | Premium Childhood Education">
+    <meta property="og:description" content="Nurturing early childhood with creative, playful learning in Rewari.">
+    
+    <!-- Google Fonts: Baloo 2 (Playful) & Nunito (Readable Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            sky: '#6EC6FF',
+                            sunshine: '#FFD54F',
+                            coral: '#FF8A65',
+                            mint: '#81C784',
+                            lavender: '#B39DDB',
+                            pink: '#F8BBD0',
+                            navy: '#263238',
+                            slate: '#546E7A',
+                            cream: '#FFF9F2',
+                            lightBlue: '#F5FBFF',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Baloo 2"', 'cursive'],
+                        body: ['"Nunito"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(110, 198, 255, 0.3)',
+                        'float': '0 20px 45px -5px rgba(38, 50, 56, 0.1)',
+                        'card': '0 15px 35px -5px rgba(255, 138, 101, 0.15)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'cloud-slow': 'moveCloud 50s linear infinite',
+                        'cloud-fast': 'moveCloud 30s linear infinite',
+                        'bounce-soft': 'bounceSoft 2.5s ease-in-out infinite',
+                        'spin-slow': 'spin 20s linear infinite',
+                        'wave': 'wave 2.5s ease-in-out infinite',
+                        'butterfly-fly': 'butterfly 18s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(3deg)' },
+                        },
+                        moveCloud: {
+                            '0%': { transform: 'translateX(-20vw)' },
+                            '100%': { transform: 'translateX(110vw)' },
+                        },
+                        bounceSoft: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        wave: {
+                            '0%, 100%': { transform: 'rotate(0deg)' },
+                            '25%': { transform: 'rotate(-8deg)' },
+                            '75%': { transform: 'rotate(10deg)' },
+                        },
+                        butterfly: {
+                            '0%': { transform: 'translate(-10vw, 40vh) scale(0.8) rotate(15deg)' },
+                            '33%': { transform: 'translate(40vw, 15vh) scale(1) rotate(-10deg)' },
+                            '66%': { transform: 'translate(70vw, 45vh) scale(0.9) rotate(20deg)' },
+                            '100%': { transform: 'translate(110vw, 20vh) scale(1.1) rotate(0deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Visual Stylesheet -->
     <style>
-        /* --- DESIGN SYSTEM & CSS VARIABLES --- */
-        :root {
-            --primary: #1e2640;          /* Deep Midnight Indigo - represents wisdom, deep concentration, stability */
-            --primary-light: #f0f4f8;    /* Soft slate-silk morning sky background tint */
-            --accent: #bfa15f;           /* Warm Champagne Gold / Brushed Brass - representing prestige, achievement */
-            --accent-bg: #faf8f5;        /* Warm Alabaster Silk base - extremely gentle on eyes for reading */
-            --text-dark: #111625;        /* Deep Obsidian Slate for primary high-contrast text */
-            --text-muted: #505c74;       /* Slate Grey for elegant secondary descriptions */
-            --bg-white: #ffffff;
-            --border-color: #e5e9f0;
-            --shadow-sm: 0 4px 12px rgba(30, 38, 64, 0.03);
-            --shadow-md: 0 12px 30px rgba(30, 38, 64, 0.06);
-            --shadow-lg: 0 24px 48px rgba(30, 38, 64, 0.1);
-            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            --border-radius: 16px;
-        }
-
-        /* --- RESET & GLOBAL STYLES --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        :root { --sparkle-size: 15px; }
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-white);
-            line-height: 1.6;
+            font-family: 'Nunito', sans-serif;
+            background-color: #FFF9F2;
+            color: #546E7A;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
         }
-
-        h1, h2, h3, h4 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            line-height: 1.25;
-            color: var(--text-dark);
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-        }
-
-        h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            position: relative;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-        }
-
-        /* Subtle gold indicator under headers */
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        p {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-padding {
-            padding: 7rem 0;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .text-center h2::after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* --- BUTTONS --- */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 0.9rem 2.2rem;
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: 50px;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: var(--bg-white);
-            box-shadow: 0 4px 14px rgba(30, 38, 64, 0.25);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent);
-            color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(191, 161, 95, 0.4);
-        }
-
-        .btn-secondary {
-            background-color: var(--primary-light);
-            color: var(--primary);
-            border: 1px solid rgba(30, 38, 64, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--primary);
-            color: var(--bg-white);
-            transform: translateY(-2px);
-        }
-
-        /* --- STICKY NAVIGATION BAR --- */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .navbar.scrolled {
-            box-shadow: var(--shadow-sm);
-            padding: 0.5rem 0;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-            transition: var(--transition);
-        }
-
-        .navbar.scrolled .nav-container {
-            height: 70px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .logo i {
-            font-size: 1.8rem;
-            color: var(--accent);
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--accent);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-            border: none;
-            background: none;
-            padding: 5px;
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: var(--primary);
-            border-radius: 3px;
-            transition: var(--transition);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            position: relative;
-            background: linear-gradient(135deg, var(--bg-white) 0%, var(--primary-light) 100%);
-            padding: 11rem 0 7rem 0;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            min-height: 90vh;
-        }
-
-        /* Decorative background glow */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            right: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(191, 161, 95, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-tagline {
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .hero-title {
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .hero-desc {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            max-width: 540px;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        /* Vector Illustration Styling */
-        .hero-illustration {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-illustration svg {
-            width: 100%;
-            max-width: 480px;
-            height: auto;
-            filter: drop-shadow(0 15px 30px rgba(30, 38, 64, 0.12));
-        }
-
-        /* --- ABOUT US SECTION --- */
-        .about {
-            background-color: var(--bg-white);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-        }
-
-        .about-image:hover img {
-            transform: scale(1.03);
-        }
-
-        /* Decorative stamp element */
-        .about-badge {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background-color: var(--primary);
-            color: var(--bg-white);
-            padding: 2rem;
-            border-radius: 50%;
-            width: 130px;
-            height: 130px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            border: 4px solid var(--accent);
-        }
-
-        .about-badge span {
-            font-size: 1.5rem;
-            font-weight: 800;
-            line-height: 1;
-            color: var(--accent);
-        }
-
-        .about-badge p {
-            font-size: 0.75rem;
-            color: var(--primary-light);
-            font-weight: 500;
-            margin: 0;
-        }
-
-        .about-content h2 {
-            margin-bottom: 2rem;
-        }
-
-        .about-text {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-            border-top: 1px solid var(--border-color);
-            padding-top: 2rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.2rem;
-            color: var(--accent);
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-item p {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        /* --- FACILITIES SECTION --- */
-        .facilities {
-            background-color: var(--accent-bg);
-        }
-
-        .section-header-desc {
-            max-width: 600px;
-            margin: 1.5rem auto 4.5rem auto;
-            font-size: 1.1rem;
-        }
-
-        .facilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .facility-card {
-            background-color: var(--bg-white);
-            border-radius: var(--border-radius);
-            padding: 3rem 2.5rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .facility-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: transparent;
-            transition: var(--transition);
-        }
-
-        .facility-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-md);
-            border-color: rgba(191, 161, 95, 0.4);
-        }
-
-        .facility-card:hover::before {
-            background-color: var(--accent);
-        }
-
-        .facility-icon-wrapper {
-            width: 70px;
-            height: 70px;
-            border-radius: 12px;
-            background-color: var(--primary-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            transition: var(--transition);
-        }
-
-        .facility-icon-wrapper i {
-            font-size: 1.8rem;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .facility-card:hover .facility-icon-wrapper {
-            background-color: var(--primary);
-        }
-
-        .facility-card:hover .facility-icon-wrapper i {
-            color: var(--accent);
-        }
-
-        .facility-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .facility-card p {
-            font-size: 0.95rem;
-        }
-
-        /* --- WHY CHOOSE US SECTION --- */
-        .why-choose {
-            background-color: var(--bg-white);
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .why-features {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .why-item {
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .why-icon {
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            background-color: var(--primary-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .why-text h4 {
-            font-size: 1.15rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-
-        .why-text p {
-            font-size: 0.95rem;
-        }
-
-        .why-illustration {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .why-illustration svg {
-            width: 100%;
-            max-width: 450px;
-            height: auto;
-            filter: drop-shadow(0 15px 30px rgba(30, 38, 64, 0.1));
-        }
-
-        /* --- TIMINGS & INFO SECTION --- */
-        .info-section {
-            background-color: var(--accent-bg);
-            position: relative;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 4rem;
-            align-items: stretch;
-        }
-
-        /* Timings Card Design */
-        .timings-card {
-            background-color: var(--bg-white);
-            border-radius: var(--border-radius);
-            padding: 3.5rem 3rem;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .timings-header {
-            margin-bottom: 2.5rem;
-        }
-
-        .timings-header i {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .timings-header h3 {
-            color: var(--primary);
-        }
-
-        .timings-rows {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .timing-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 1.2rem;
-            border-bottom: 1px dashed var(--border-color);
-        }
-
-        .timing-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .timing-day {
-            font-weight: 600;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .timing-day i {
-            color: var(--accent);
-            font-size: 0.9rem;
-        }
-
-        .timing-hours {
-            font-family: inherit;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--primary);
-            background-color: var(--primary-light);
-            padding: 0.4rem 1.2rem;
-            border-radius: 30px;
-        }
-
-        /* Location Card Design */
-        .location-card {
-            background-color: var(--bg-white);
-            border-radius: var(--border-radius);
-            padding: 3.5rem 3rem;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .location-header {
-            margin-bottom: 2rem;
-        }
-
-        .location-header i {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .location-header h3 {
-            color: var(--primary);
-        }
-
-        .address-box {
-            background-color: var(--accent-bg);
-            border-left: 4px solid var(--accent);
-            padding: 1.5rem 2rem;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            margin-bottom: 2.5rem;
-        }
-
-        .address-box p {
-            color: var(--text-dark);
-            font-size: 1.1rem;
-            line-height: 1.7;
-            font-weight: 500;
-        }
-
-        .directions-btn {
-            align-self: flex-start;
-        }
-
-        /* --- CONTACT SECTION --- */
-        .contact {
-            background-color: var(--bg-white);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 5rem;
-            align-items: start;
-        }
-
-        .contact-info-panel {
-            background-color: var(--primary);
-            color: var(--bg-white);
-            border-radius: var(--border-radius);
-            padding: 3.5rem 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Abstract botanical overlay graphic */
-        .contact-info-panel::after {
-            content: '\f518';
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            bottom: -50px;
-            right: -30px;
-            font-size: 15rem;
-            color: rgba(255, 255, 255, 0.03);
-            pointer-events: none;
-        }
-
-        .contact-info-title {
-            font-size: 1.8rem;
-            margin-bottom: 2.5rem;
-            color: var(--bg-white);
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-            position: relative;
-            z-index: 2;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background-color: rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-
-        .contact-text h4 {
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent);
-            margin-bottom: 0.4rem;
-        }
-
-        .contact-text p, .contact-text a {
-            font-size: 1.1rem;
-            color: var(--bg-white);
-            font-weight: 600;
-        }
-
-        /* Custom Interactive Contact Form */
-        .contact-form-panel {
-            background-color: var(--bg-white);
-            border-radius: var(--border-radius);
-            padding: 3rem;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-        }
-
-        .form-title {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-
-        .form-desc {
-            margin-bottom: 2.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .form-label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--primary);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            color: var(--text-dark);
-            background-color: var(--accent-bg);
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent);
-            background-color: var(--bg-white);
-            box-shadow: 0 0 0 4px rgba(191, 161, 95, 0.15);
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-message {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            border-radius: 8px;
-            font-weight: 500;
-            display: none;
-        }
-
-        .form-message.success {
-            display: block;
-            background-color: #d1fae5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
-        }
-
-        /* --- FOOTER --- */
-        .footer {
-            background-color: var(--text-dark);
-            color: var(--bg-white);
-            padding: 5rem 0 2rem 0;
-            position: relative;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 4rem;
-        }
-
-        .footer-about .logo {
-            color: var(--bg-white);
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Baloo 2', cursive;
+            color: #263238;
+        }
+        /* Custom Loader */
+        #loader {
+            position: fixed; inset: 0; z-index: 100000;
+            background: #FFF9F2;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #FFF9F2; }
+        ::-webkit-scrollbar-thumb { background: #FFD54F; border-radius: 10px; border: 2px solid #FFF9F2; }
+        ::-webkit-scrollbar-thumb:hover { background: #FF8A65; }
+
+        /* Cursor Sparkle Particles */
+        .sparkle {
+            position: fixed; width: var(--sparkle-size); height: var(--sparkle-size);
+            pointer-events: none; border-radius: 50%; z-index: 99999;
+            transform: translate(-50%, -50%) scale(1);
+            animation: fadeOutParticle 0.8s forwards ease-out;
+        }
+        @keyframes fadeOutParticle {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.1) rotate(180deg); }
+        }
+
+        /* Glassmorphism & Overlays */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+        }
+        .card-glowing {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card-glowing:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 138, 101, 0.12);
+        }
+
+        /* Responsive Layout Improvements */
+        .masonry-gallery {
+            column-count: 1; column-gap: 1.5rem;
+        }
+        @media (min-width: 640px) { .masonry-gallery { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-gallery { column-count: 3; } }
+        .masonry-item {
+            break-inside: avoid;
             margin-bottom: 1.5rem;
         }
 
-        .footer-about .logo i {
-            color: var(--accent);
+        /* Timeline Design */
+        .activity-timeline::before {
+            content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 6px;
+            background: #FFD54F; transform: translateX(-50%); border-radius: 6px;
         }
-
-        .footer-about p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 2rem;
-            max-width: 320px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--bg-white);
-            transition: var(--transition);
-        }
-
-        .social-btn:hover {
-            background-color: var(--accent);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .footer-links-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: var(--bg-white);
-            position: relative;
-        }
-
-        .footer-links-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-links-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .footer-links-list a {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-links-list a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
-        }
-
-        .footer-contact-item {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-contact-item i {
-            color: var(--accent);
-            margin-top: 4px;
-        }
-
-        .footer-contact-item span {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .footer-copyright {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .footer-bottom-links a {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-        }
-
-        .footer-bottom-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Scroll to Top button */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: var(--bg-white);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow-md);
-            z-index: 99;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .scroll-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-to-top:hover {
-            background-color: var(--accent);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        /* --- RESPONSIVE MEDIA QUERIES --- */
-        @media (max-width: 1024px) {
-            .hero-grid, .about-grid, .why-grid, .info-grid, .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-            }
-
-            .hero {
-                padding-top: 8rem;
-                text-align: center;
-            }
-
-            .hero-desc {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-btns {
-                justify-content: center;
-            }
-
-            .about-image {
-                max-width: 500px;
-                margin: 0 auto;
-                order: -1;
-            }
-
-            .why-illustration {
-                order: -1;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
         @media (max-width: 768px) {
-            .section-padding {
-                padding: 5rem 0;
-            }
-
-            /* Navbar Mobile Behavior */
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--bg-white);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
-                border-bottom: 1px solid var(--border-color);
-                box-shadow: var(--shadow-md);
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-10px);
-                transition: var(--transition);
-            }
-
-            .nav-menu.active {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
-
-            .menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(6px, 6px);
-            }
-
-            .menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(6px, -7px);
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                text-align: center;
-            }
-
-            .timings-card, .location-card, .contact-info-panel, .contact-form-panel {
-                padding: 2.5rem 1.5rem;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
+            .activity-timeline::before { left: 24px; transform: none; }
+            .timeline-card { width: calc(100% - 60px) !important; margin-left: auto !important; margin-right: 0 !important; text-align: left !important; }
+            .timeline-badge { left: 24px !important; transform: translateX(-50%) !important; }
         }
 
-        @media (max-width: 480px) {
-            .hero-btns {
-                flex-direction: column;
-                gap: 1rem;
-            }
+        /* Scroll Animation Utility Trigger Classes */
+        .reveal-node { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+        .reveal-node.visible { opacity: 1; transform: translateY(0); }
 
-            .btn {
-                width: 100%;
-            }
+        /* Custom Confetti Canvas styles */
+        #confetti-canvas {
+            position: fixed; inset: 0; pointer-events: none; z-index: 100001; width: 100%; height: 100%;
         }
     </style>
 </head>
-<body>
+<body class="relative bg-brand-cream text-brand-slate overflow-x-hidden select-none">
 
-    <!-- STICKY NAVIGATION BAR -->
-    <header class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <i class="fa-solid fa-book-open-reader"></i>
-                Swastik Library
-            </a>
-            <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav class="nav-menu" id="nav-menu">
-                <a href="#hero" class="nav-link active">Home</a>
-                <a href="#about" class="nav-link">About Us</a>
-                <a href="#facilities" class="nav-link">Facilities</a>
-                <a href="#why-choose" class="nav-link">Why Us</a>
-                <a href="#info" class="nav-link">Timings & Location</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </nav>
+    <!-- Screen Loading Curtain -->
+    <div id="loader">
+        <div class="relative flex flex-col items-center">
+            <!-- Smiling Elephant Mascot Animation SVG -->
+            <svg class="w-32 h-32 text-brand-sky animate-bounce-soft" viewBox="0 0 100 100" fill="currentColor">
+                <circle cx="50" cy="50" r="45" fill="#F5FBFF"/>
+                <path d="M70,55 C70,62 65,68 50,68 C35,68 30,62 30,55 C30,48 40,43 50,43 C60,43 70,48 70,55 Z" fill="#6EC6FF"/>
+                <circle cx="42" cy="48" r="4" fill="#263238"/>
+                <circle cx="58" cy="48" r="4" fill="#263238"/>
+                <path d="M50,56 Q50,64 54,64 Q58,64 58,56" stroke="#263238" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <!-- Cheerful Ears -->
+                <ellipse cx="25" cy="50" rx="10" ry="15" fill="#F8BBD0"/>
+                <ellipse cx="75" cy="50" rx="10" ry="15" fill="#F8BBD0"/>
+            </svg>
+            <h2 class="text-3xl font-heading font-extrabold text-brand-coral mt-4">Vatsalya Play School</h2>
+            <p class="text-brand-slate font-semibold text-sm tracking-widest mt-1">NURTURING HAPPINESS...</p>
         </div>
-    </header>
+    </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="hero">
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <span class="hero-tagline">Swastik Library</span>
-                <h1 class="hero-title">A Quiet Space for Learning & Success</h1>
-                <p class="hero-desc">Elevate your study experience in our premium, soundproofed self-study zone designed for academic high-achievers, competitive exam aspirants, and focused professionals.</p>
-                <div class="hero-btns">
-                    <a href="#info" class="btn btn-primary">
-                        Visit Us <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">Reserve a Desk</a>
-                </div>
-            </div>
-            <div class="hero-illustration">
-                <!-- SVG Study Illustration with Elegant Midnight & Champagne Gold Tones -->
-                <svg viewBox="0 0 500 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Desk Base -->
-                    <rect x="50" y="380" width="400" height="12" rx="6" fill="#111625" />
-                    <!-- Back Board Shadow -->
-                    <rect x="70" y="100" width="360" height="280" rx="20" fill="#f0f4f8" />
-                    <rect x="80" y="110" width="340" height="270" rx="12" fill="#ffffff" />
-                    
-                    <!-- Decorative Clock on the wall -->
-                    <circle cx="250" cy="180" r="45" fill="#f0f4f8" />
-                    <circle cx="250" cy="180" r="40" fill="#ffffff" />
-                    <line x1="250" y1="180" x2="250" y2="155" stroke="#1e2640" stroke-width="4" stroke-linecap="round" />
-                    <line x1="250" y1="180" x2="270" y2="180" stroke="#1e2640" stroke-width="4" stroke-linecap="round" />
-                    
-                    <!-- Shelves with Books -->
-                    <rect x="100" y="240" width="130" height="6" fill="#1e2640" rx="3" />
-                    <!-- Books Shelf 1 -->
-                    <rect x="115" y="210" width="16" height="30" fill="#bfa15f" rx="2" />
-                    <rect x="135" y="200" width="18" height="40" fill="#1e2640" rx="2" />
-                    <rect x="157" y="215" width="16" height="25" fill="#505c74" rx="2" />
-                    <!-- Slanted book -->
-                    <g transform="rotate(15 180 215)">
-                        <rect x="175" y="195" width="16" height="35" fill="#bfa15f" rx="2" />
-                    </g>
+    <!-- Canvas for Confetti Events -->
+    <canvas id="confetti-canvas"></canvas>
 
-                    <rect x="270" y="240" width="130" height="6" fill="#1e2640" rx="3" />
-                    <!-- Plants and decor Shelf 2 -->
-                    <path d="M335 240 C330 220, 340 210, 350 240 Z" fill="#1e2640" />
-                    <path d="M350 240 C345 215, 355 205, 365 240 Z" fill="#bfa15f" />
-                    <path d="M320 240 C315 225, 325 215, 335 240 Z" fill="#505c74" />
-                    <rect x="325" y="235" width="30" height="10" fill="#111625" rx="2" />
-
-                    <!-- Study Desk items on primary table -->
-                    <!-- Laptop -->
-                    <path d="M190 355 L310 355 L320 375 L180 375 Z" fill="#1e2640" />
-                    <rect x="200" y="320" width="100" height="45" rx="4" fill="#111625" />
-                    <rect x="205" y="325" width="90" height="35" rx="2" fill="#ffffff" />
-                    <!-- Code/Layout lines inside laptop screen -->
-                    <rect x="210" y="330" width="40" height="4" fill="#bfa15f" />
-                    <rect x="210" y="338" width="60" height="4" fill="#f0f4f8" />
-                    <rect x="210" y="346" width="50" height="4" fill="#1e2640" />
-                    
-                    <!-- Mug of Coffee -->
-                    <rect x="335" y="350" width="16" height="25" rx="3" fill="#1e2640" />
-                    <path d="M351 355 C355 355, 355 365, 351 365" stroke="#1e2640" stroke-width="3" />
-
-                    <!-- Desk Lamp -->
-                    <path d="M120 375 L150 375" stroke="#111625" stroke-width="5" stroke-linecap="round" />
-                    <path d="M135 375 L135 310" stroke="#111625" stroke-width="4" />
-                    <path d="M135 310 Q145 285 170 290" fill="none" stroke="#111625" stroke-width="4" />
-                    <path d="M155 280 L185 295 L175 305 L145 290 Z" fill="#1e2640" />
-                    <!-- Light Glow -->
-                    <polygon points="155,295 125,375 220,375 185,305" fill="url(#lamp-glow)" opacity="0.15" />
-
-                    <defs>
-                        <linearGradient id="lamp-glow" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#bfa15f" />
-                            <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT US SECTION -->
-    <section class="about section-padding" id="about">
-        <div class="container about-grid">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&q=80&w=1200" alt="Beautiful Peaceful Library Reading Hall">
-                <div class="about-badge">
-                    <span>5+</span>
-                    <p>Years of Academic Success</p>
-                </div>
-            </div>
-            <div class="about-content">
-                <h2>Peaceful. Productive. Purpose-built.</h2>
-                <p class="about-text">
-                    Swastik Library provides a peaceful and productive environment for students, professionals, and competitive exam aspirants. The library is equipped with excellent lighting, high-speed Wi-Fi, comfortable seating, and parking facilities to ensure a comfortable study experience.
-                </p>
-                <p class="about-text" style="font-size: 1rem; color: var(--text-muted);">
-                    We understand that clearing competitive exams like UPSC, SSC, Banking, and State services requires extreme determination and absolute focus. Our library is specifically tailored to offer distraction-free zones, ergonomic furniture to prevent fatigue during long sitting hours, and consistent support utilities.
-                </p>
+    <!-- 1. HEADER & NAVIGATION -->
+    <nav class="fixed w-full z-50 glass-header transition-all duration-300 shadow-sm" id="main-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
                 
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <h3>100+</h3>
-                        <p>Comfortable Desks</p>
+                <!-- Brand Identity -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <div class="w-12 h-12 bg-gradient-to-tr from-brand-sky to-brand-pink rounded-2xl flex items-center justify-center text-white text-2xl mr-3 shadow-soft hover:rotate-12 transition-transform">
+                        <i class="fa-solid fa-graduation-cap"></i>
                     </div>
-                    <div class="stat-item">
-                        <h3>99%</h3>
-                        <p>Focus Rate</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>1000+</h3>
-                        <p>Successful Alumni</p>
+                    <div>
+                        <span class="font-heading font-extrabold text-2xl text-brand-navy tracking-tight block leading-none">Vatsalya</span>
+                        <span class="text-xs font-bold text-brand-coral tracking-wider uppercase">Play School</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FACILITIES SECTION -->
-    <section class="facilities section-padding" id="facilities">
-        <div class="container">
-            <div class="text-center">
-                <h2>Our World-Class Facilities</h2>
-                <p class="section-header-desc">We leave no stone unturned in ensuring you get a seamless, uninterrupted study experience with modern, high-quality amenities.</p>
-            </div>
-            
-            <div class="facilities-grid">
-                <!-- Superb Lighting -->
-                <div class="facility-card">
-                    <div class="facility-icon-wrapper">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <h3>Superb Lighting</h3>
-                    <p>Eye-care compliant individual desk lighting and well-distributed natural illumination designed to protect eyes during long-haul study periods.</p>
-                </div>
-
-                <!-- High-Speed Wi-Fi -->
-                <div class="facility-card">
-                    <div class="facility-icon-wrapper">
-                        <i class="fa-solid fa-wifi"></i>
-                    </div>
-                    <h3>High-Speed Wi-Fi</h3>
-                    <p>Uninterrupted premium high-speed optical fiber Wi-Fi internet connection to support heavy online video classes, live streams, and downloads.</p>
-                </div>
-
-                <!-- Comfortable Study Environment -->
-                <div class="facility-card">
-                    <div class="facility-icon-wrapper">
-                        <i class="fa-solid fa-chair"></i>
-                    </div>
-                    <h3>Comfortable Study Environment</h3>
-                    <p>Ergonomic high-back cushion chairs, spacious individual wooden desk partitions, power outlets on every desk, and peaceful interior design.</p>
-                </div>
-
-                <!-- Parking Available -->
-                <div class="facility-card">
-                    <div class="facility-icon-wrapper">
-                        <i class="fa-solid fa-square-parking"></i>
-                    </div>
-                    <h3>Parking Available</h3>
-                    <p>Hassle-free dynamic parking space for two-wheelers and vehicles, letting you focus completely on studying rather than worrying about safety.</p>
-                </div>
-
-                <!-- Free Parking Options -->
-                <div class="facility-card">
-                    <div class="facility-icon-wrapper">
-                        <i class="fa-solid fa-circle-dollar-to-slot"></i>
-                    </div>
-                    <h3>Free Parking Options</h3>
-                    <p>Absolutely no extra charges for vehicle safety. We offer completely free parking spaces dedicated strictly to our regular library students.</p>
-                </div>
-
-                <!-- Clean and Peaceful Atmosphere -->
-                <div class="facility-card">
-                    <div class="facility-icon-wrapper">
-                        <i class="fa-solid fa-feather-pointed"></i>
-                    </div>
-                    <h3>Clean & Peaceful Atmosphere</h3>
-                    <p>Pin-drop silence rules, daily professional sanitization, clean drinking water access, and sanitized washrooms maintained to high hygiene standards.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- WHY CHOOSE US SECTION -->
-    <section class="why-choose section-padding" id="why-choose">
-        <div class="container why-grid">
-            <div class="why-content">
-                <h2>Why Swastik Library is the Perfect Choice</h2>
-                <p class="section-header-desc" style="margin-left: 0; margin-bottom: 3rem;">We prioritize your career growth by giving you a platform designed entirely around student success and comfortable learning.</p>
                 
-                <div class="why-features">
-                    <!-- 1 -->
-                    <div class="why-item">
-                        <div class="why-icon"><i class="fa-solid fa-check"></i></div>
-                        <div class="why-text">
-                            <h4>Peaceful Study Environment</h4>
-                            <p>Strategically constructed sound-insulated rooms built to keep external noise out, allowing maximum attention and deep concentration.</p>
-                        </div>
-                    </div>
-                    <!-- 2 -->
-                    <div class="why-item">
-                        <div class="why-icon"><i class="fa-solid fa-check"></i></div>
-                        <div class="why-text">
-                            <h4>Reliable High-Speed Internet</h4>
-                            <p>Equipped with backup connections to ensure you stay online for lectures and tests without a single second of downtime.</p>
-                        </div>
-                    </div>
-                    <!-- 3 -->
-                    <div class="why-item">
-                        <div class="why-icon"><i class="fa-solid fa-check"></i></div>
-                        <div class="why-text">
-                            <h4>Spacious Seating</h4>
-                            <p>Wider desks that give you plenty of space for your books, laptop, writing pads, and personal notebooks without feeling cramped.</p>
-                        </div>
-                    </div>
-                    <!-- 4 -->
-                    <div class="why-item">
-                        <div class="why-icon"><i class="fa-solid fa-check"></i></div>
-                        <div class="why-text">
-                            <h4>Convenient Location</h4>
-                            <p>Situated in Model Town, Rewari, our library is highly accessible from all local coaching centers, bus stand, and colleges.</p>
-                        </div>
-                    </div>
-                    <!-- 5 -->
-                    <div class="why-item">
-                        <div class="why-icon"><i class="fa-solid fa-check"></i></div>
-                        <div class="why-text">
-                            <h4>Safe Parking Facility</h4>
-                            <p>Continuous security and dedicated parking layout means peace of mind for you and complete safety for your vehicle.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="why-illustration">
-                <!-- SVG Why Choose Us Illustration with Midnight Slate and Warm Gold Accents -->
-                <svg viewBox="0 0 450 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="225" cy="225" r="180" fill="#faf8f5" />
-                    <!-- Shield for Safety/Focus -->
-                    <path d="M225 90 C300 90, 315 130, 315 180 C315 270, 225 330, 225 330 C225 330, 135 270, 135 180 C135 130, 150 90, 225 90 Z" fill="#1e2640" opacity="0.1" />
-                    <path d="M225 110 C280 110, 295 145, 295 185 C295 255, 225 310, 225 310 C225 310, 155 255, 155 185 C155 145, 170 110, 225 110 Z" fill="#1e2640" />
-                    
-                    <!-- Checkmark inside Shield -->
-                    <path d="M195 205 L215 225 L255 185" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
-                    
-                    <!-- Surrounding decorative items -->
-                    <!-- Star 1 -->
-                    <path d="M120 140 L125 155 L140 160 L125 165 L120 180 L115 165 L100 160 L115 155 Z" fill="#bfa15f" />
-                    <!-- Star 2 -->
-                    <path d="M330 280 L333 290 L343 293 L333 296 L330 306 L327 296 L317 293 L327 290 Z" fill="#f0f4f8" />
-                    <!-- Star 3 -->
-                    <path d="M320 120 L322 126 L328 128 L322 130 L320 136 L318 130 L312 128 L318 126 Z" fill="#1e2640" />
-                    
-                    <!-- Clean minimal target arch -->
-                    <circle cx="225" cy="225" r="140" stroke="#bfa15f" stroke-width="4" stroke-dasharray="12 12" />
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <!-- TIMINGS & LOCATION SECTION -->
-    <section class="info-section section-padding" id="info">
-        <div class="container">
-            <div class="text-center">
-                <h2>Timings & Location</h2>
-                <p class="section-header-desc">Plan your routine perfectly. We are open long hours and situated in a highly convenient area of Rewari.</p>
-            </div>
-            
-            <div class="info-grid">
-                <!-- TIMINGS CARD -->
-                <div class="timings-card">
-                    <div class="timings-header">
-                        <i class="fa-regular fa-clock"></i>
-                        <h3>Library Timings</h3>
-                        <p>We are open seven days a week to support your continuous preparation schedule.</p>
-                    </div>
-                    
-                    <div class="timings-rows">
-                        <div class="timing-row">
-                            <span class="timing-day"><i class="fa-solid fa-calendar-day"></i> Monday – Saturday</span>
-                            <span class="timing-hours">8:00 AM – 9:00 PM</span>
-                        </div>
-                        <div class="timing-row">
-                            <span class="timing-day"><i class="fa-solid fa-calendar-day"></i> Sunday</span>
-                            <span class="timing-hours">8:00 AM – 8:00 PM</span>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 2rem;">
-                        <p style="font-size: 0.9rem; font-style: italic; color: var(--text-muted);">*Special operating hours and quiet study schedules during peak exam seasons may apply.</p>
-                    </div>
+                <!-- Navigation Items -->
+                <div class="hidden lg:flex space-x-6 xl:space-x-8 items-center">
+                    <a href="#home" class="text-brand-slate hover:text-brand-sky font-extrabold transition-colors">Home</a>
+                    <a href="#about" class="text-brand-slate hover:text-brand-sunshine font-extrabold transition-colors">About Us</a>
+                    <a href="#why-choose" class="text-brand-slate hover:text-brand-mint font-extrabold transition-colors">Why Choose Us</a>
+                    <a href="#programs" class="text-brand-slate hover:text-brand-coral font-extrabold transition-colors">Programs</a>
+                    <a href="#activities" class="text-brand-slate hover:text-brand-lavender font-extrabold transition-colors">Activities</a>
+                    <a href="#facilities" class="text-brand-slate hover:text-brand-pink font-extrabold transition-colors">Facilities</a>
+                    <a href="#gallery" class="text-brand-slate hover:text-brand-sky font-extrabold transition-colors">Gallery</a>
+                    <a href="#contact" class="text-brand-slate hover:text-brand-coral font-extrabold transition-colors">Contact</a>
+                    <button onclick="openEnrollmentModal()" class="bg-brand-sky hover:bg-brand-navy text-white px-6 py-2.5 rounded-full font-extrabold shadow-soft hover:shadow-float transform hover:scale-105 transition-all">
+                        <i class="fa-solid fa-face-smile mr-2"></i>Enroll Now
+                    </button>
                 </div>
 
-                <!-- LOCATION CARD -->
-                <div class="location-card">
-                    <div class="location-header">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                        <h3>Our Location</h3>
-                        <p>Located in the heart of Model Town, easily accessible for everyone in Rewari.</p>
-                    </div>
-                    
-                    <div class="address-box">
-                        <p>
-                            Back Side Yaduvanshi Hospital,<br>
-                            281R, Maharana Pratap Chowk,<br>
-                            Model Town, Rewari,<br>
-                            Haryana 123401
-                        </p>
-                    </div>
-                    
-                    <!-- Modern directions trigger linked directly to Google Maps search parameters -->
-                    <a href="https://maps.google.com/?q=Swastik+Library+Yaduvanshi+Hospital+Model+Town+Rewari" target="_blank" class="btn btn-primary directions-btn">
-                        Get Directions on Google Maps <i class="fa-solid fa-location-arrow"></i>
-                    </a>
+                <!-- Hamburger Button (Mobile) -->
+                <div class="lg:hidden flex items-center">
+                    <button id="hamburger" class="text-brand-navy hover:text-brand-sky focus:outline-none text-2xl p-2 rounded-xl bg-brand-cream" aria-label="Toggle Menu">
+                        <i id="hamburger-icon" class="fa-solid fa-bars"></i>
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- CONTACT SECTION -->
-    <section class="contact section-padding" id="contact">
-        <div class="container">
-            <div class="text-center">
-                <h2>Contact & Inquiry</h2>
-                <p class="section-header-desc">Have questions about seat availability, dynamic monthly plans, or facilities? Get in touch with us today!</p>
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-drawer" class="hidden lg:hidden bg-brand-cream border-t border-brand-pink/20 shadow-float absolute w-full left-0 transition-all">
+            <div class="px-4 pt-4 pb-8 space-y-2 text-center">
+                <a href="#home" class="block px-4 py-3 text-brand-slate hover:text-brand-sky font-extrabold rounded-2xl bg-white/50 transition-colors">Home</a>
+                <a href="#about" class="block px-4 py-3 text-brand-slate hover:text-brand-sunshine font-extrabold rounded-2xl bg-white/50 transition-colors">About Us</a>
+                <a href="#why-choose" class="block px-4 py-3 text-brand-slate hover:text-brand-mint font-extrabold rounded-2xl bg-white/50 transition-colors">Why Choose Us</a>
+                <a href="#programs" class="block px-4 py-3 text-brand-slate hover:text-brand-coral font-extrabold rounded-2xl bg-white/50 transition-colors">Programs</a>
+                <a href="#activities" class="block px-4 py-3 text-brand-slate hover:text-brand-lavender font-extrabold rounded-2xl bg-white/50 transition-colors">Activities</a>
+                <a href="#gallery" class="block px-4 py-3 text-brand-slate hover:text-brand-sky font-extrabold rounded-2xl bg-white/50 transition-colors">Gallery</a>
+                <a href="#contact" class="block px-4 py-3 text-brand-slate hover:text-brand-coral font-extrabold rounded-2xl bg-white/50 transition-colors">Contact</a>
+                <button onclick="openEnrollmentModal(); toggleDrawer();" class="w-full mt-4 bg-brand-sky text-white py-3.5 rounded-full font-extrabold shadow-soft">
+                    Enroll Your Child Now
+                </button>
             </div>
-            
-            <div class="contact-grid">
-                <!-- Info Panel (Google Map removed, layout adjusted for absolute cleanliness) -->
-                <div class="contact-info-panel">
-                    <h3 class="contact-info-title">Let's Connect</h3>
-                    
-                    <div class="contact-details">
-                        <!-- Address -->
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Our Address</h4>
-                                <p>Model Town, Rewari, Haryana (123401)</p>
-                            </div>
-                        </div>
-                        <!-- Phone -->
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Call or WhatsApp</h4>
-                                <a href="tel:+919876543210">+91 98765 43210</a>
-                            </div>
-                        </div>
-                        <!-- Email -->
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Send Email</h4>
-                                <a href="mailto:info@swastiklibrary.com">info@swastiklibrary.com</a>
-                            </div>
-                        </div>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION (Dynamic Theme Elements) -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 bg-gradient-to-br from-brand-lightBlue via-white to-brand-cream">
+        <!-- Floating Drifting Clouds & Balloons -->
+        <div class="absolute top-16 left-0 text-brand-sky/20 text-9xl animate-cloud-slow"><i class="fa-solid fa-cloud"></i></div>
+        <div class="absolute top-36 right-0 text-brand-sky/30 text-7xl animate-cloud-fast"><i class="fa-solid fa-cloud"></i></div>
+        <div class="absolute bottom-24 left-1/12 text-brand-pink/30 text-5xl animate-float"><i class="fa-solid fa-balloon"></i></div>
+        <div class="absolute top-48 right-1/4 text-brand-sunshine/50 text-6xl animate-spin-slow"><i class="fa-solid fa-sun"></i></div>
+        <div class="absolute bottom-1/3 right-12 text-brand-coral/40 text-4xl animate-float-delayed"><i class="fa-solid fa-star"></i></div>
+        <div class="absolute top-20 left-1/3 text-brand-lavender/30 text-5xl animate-butterfly-fly"><i class="fa-solid fa-bug"></i></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Editorial Text Content -->
+                <div class="text-center lg:text-left reveal-node" id="hero-info">
+                    <div class="inline-flex items-center bg-white border border-brand-coral/20 px-4 py-1.5 rounded-full text-brand-coral font-extrabold text-sm mb-6 shadow-sm">
+                        <i class="fa-solid fa-star text-brand-sunshine mr-1 animate-pulse"></i> Established in 2017
                     </div>
-                </div>
-
-                <!-- Form Panel -->
-                <div class="contact-form-panel">
-                    <h3 class="form-title">Send a Message</h3>
-                    <p class="form-desc text-muted">Fill out this quick form and our team will get back to you within 2 hours with pricing and details.</p>
-                    
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Full Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="Enter 10-digit mobile number" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="shift" class="form-label">Preferred Shift</label>
-                            <select id="shift" class="form-control">
-                                <option value="morning">Morning Shift (8 AM - 2 PM)</option>
-                                <option value="evening">Evening Shift (2 PM - 9 PM)</option>
-                                <option value="full-day">Full Day Shift (8 AM - 9 PM)</option>
-                                <option value="custom">Custom Hours</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message" class="form-label">Your Message or Questions</label>
-                            <textarea id="message" class="form-control" placeholder="Write any specific questions or seat reservations requirements here..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            Submit Inquiry <i class="fa-solid fa-paper-plane"></i>
+                    <h1 class="text-5xl sm:text-6xl xl:text-7xl font-heading font-extrabold text-brand-navy leading-tight mb-4">
+                        Nurturing <span class="text-brand-sky">Early</span> <span class="text-brand-sunshine">Childhood</span> <span class="text-brand-coral">Education</span>
+                    </h1>
+                    <p class="text-lg xl:text-xl text-brand-slate font-semibold mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                        Welcome to <span class="text-brand-coral font-extrabold">Vatsalya Play School</span>, where every day is a delightful journey of play, growth, joy, and structural foundational learning.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button onclick="openEnrollmentModal()" class="bg-brand-sky hover:bg-brand-navy text-white px-8 py-4 rounded-full font-extrabold text-lg shadow-card hover:shadow-float transform hover:-translate-y-1 transition-all flex items-center justify-center">
+                            <i class="fa-solid fa-sparkles mr-2"></i> Enroll Now
                         </button>
-                    </form>
+                        <a href="#contact" class="bg-brand-coral hover:bg-brand-sunshine text-white px-8 py-4 rounded-full font-extrabold text-lg shadow-card hover:shadow-float transform hover:-translate-y-1 transition-all flex items-center justify-center">
+                            <i class="fa-solid fa-paper-plane mr-2"></i> Contact Us
+                        </a>
+                    </div>
                     
-                    <!-- Form Success Notification Box -->
-                    <div id="form-success-box" class="form-message success">
-                        <i class="fa-solid fa-circle-check"></i> Thank you! Your seat inquiry has been sent successfully. We will contact you shortly.
+                    <!-- Quick Stats Badges -->
+                    <div class="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-brand-sky/10">
+                        <div>
+                            <span class="block text-3xl font-heading font-extrabold text-brand-sky">100%</span>
+                            <span class="text-xs font-bold text-brand-slate uppercase">Safe Campus</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-heading font-extrabold text-brand-coral">9+</span>
+                            <span class="text-xs font-bold text-brand-slate uppercase">Yearly Legacy</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-heading font-extrabold text-brand-mint">10:1</span>
+                            <span class="text-xs font-bold text-brand-slate uppercase">Student Ratio</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Hero Animation (Custom Waving Mascot + Playground Graphic) -->
+                <div class="relative flex justify-center items-center reveal-node" style="transition-delay: 200ms;">
+                    <div class="relative w-full max-w-md xl:max-w-lg aspect-square">
+                        <!-- Colorful Rainbow Arc Background -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-brand-sky/20 via-brand-pink/20 to-transparent rounded-full blur-2xl animate-pulse"></div>
+                        
+                        <!-- Main Frame -->
+                        <div class="relative z-10 w-full h-full bg-white/60 border-4 border-white backdrop-blur-md rounded-[50px] shadow-float overflow-hidden flex flex-col justify-between p-8">
+                            
+                            <!-- Mascot Character Element - Animated Elephant -->
+                            <div class="flex-1 flex flex-col items-center justify-center relative">
+                                <div class="w-48 h-48 bg-brand-lightBlue rounded-full flex items-center justify-center relative group">
+                                    <svg class="w-40 h-40 text-brand-sky group-hover:scale-105 transition-transform" viewBox="0 0 100 100" fill="currentColor">
+                                        <!-- Elephant Core -->
+                                        <ellipse cx="50" cy="55" rx="25" ry="20" fill="#B39DDB" />
+                                        <circle cx="50" cy="38" r="18" fill="#B39DDB" />
+                                        <circle cx="43" cy="36" r="2" fill="#263238" />
+                                        <circle cx="57" cy="36" r="2" fill="#263238" />
+                                        <!-- Animated Trunk/Waver -->
+                                        <path id="trunk" d="M50,44 Q48,54 53,56 T58,52" fill="none" stroke="#B39DDB" stroke-width="6" stroke-linecap="round" class="animate-wave origin-top" />
+                                        <!-- Soft Pink Ears -->
+                                        <ellipse cx="30" cy="35" rx="8" ry="12" fill="#F8BBD0" />
+                                        <ellipse cx="70" cy="35" rx="8" ry="12" fill="#F8BBD0" />
+                                    </svg>
+                                    
+                                    <!-- Playful Dialogue Bubble -->
+                                    <div class="absolute -top-4 -right-12 bg-brand-sunshine text-brand-navy font-bold text-xs px-3 py-1.5 rounded-2xl shadow-soft animate-bounce-soft">
+                                        Hi! I'm Himi 🐼
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Decorative Grass Base -->
+                            <div class="flex justify-between items-end border-t border-brand-mint/20 pt-4">
+                                <div class="flex items-center">
+                                    <span class="text-3xl mr-2">🎈</span>
+                                    <span class="text-sm font-extrabold text-brand-navy">Learn & Grow</span>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <span class="text-2xl animate-bounce-soft" style="animation-delay: 0.5s;">🦒</span>
+                                    <span class="text-2xl animate-bounce-soft" style="animation-delay: 1s;">🦁</span>
+                                    <span class="text-2xl animate-bounce-soft" style="animation-delay: 1.5s;">🐰</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bouncing scroll down anchor -->
+        <a href="#about" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-brand-sky text-3xl animate-bounce">
+            <i class="fa-solid fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- 2. ABOUT US (Timeline Milestone Section) -->
+    <section id="about" class="py-24 relative bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal-node">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-navy mb-4">About Vatsalya Play School</h2>
+                <div class="w-24 h-2.5 bg-brand-sunshine mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Rich Narrative with Milestone Timeline Cards -->
+                <div class="space-y-6 reveal-node">
+                    <h3 class="text-3xl font-heading text-brand-sky font-extrabold">Building Solid Foundational Pillars Since 2017</h3>
+                    <p class="text-lg text-brand-slate leading-relaxed">
+                        At <span class="text-brand-coral font-extrabold">Vatsalya</span>, we focus deeply on cognitive development, physical well-being, and social interaction. Our curriculum merges structured pre-school formats with interactive play models, offering each child an organic launchpad to lifelong curiosity.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 bg-brand-lightBlue/50 rounded-2xl border border-brand-sky/20">
+                            <span class="text-2xl mb-2 block">🏫</span>
+                            <h4 class="font-heading font-extrabold text-brand-navy text-lg">Safe Infrastructure</h4>
+                            <p class="text-xs text-brand-slate">Custom childproof furnishings and play setups.</p>
+                        </div>
+                        <div class="p-4 bg-brand-pink/20 rounded-2xl border border-brand-pink/30">
+                            <span class="text-2xl mb-2 block">🎨</span>
+                            <h4 class="font-heading font-extrabold text-brand-navy text-lg">Expressive Arts</h4>
+                            <p class="text-xs text-brand-slate">Uninhibited drawing, sculpting, and play-doh areas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Timeline milestones -->
+                <div class="space-y-4 reveal-node" style="transition-delay: 200ms;">
+                    <h4 class="text-2xl font-heading font-extrabold text-brand-navy mb-6">Our Milestones Journey</h4>
+                    
+                    <div class="relative border-l-4 border-brand-sky/30 ml-4 pl-8 space-y-8">
+                        <div class="relative">
+                            <div class="absolute -left-12 top-0.5 w-8 h-8 rounded-full bg-brand-sky flex items-center justify-center text-white text-xs">
+                                <i class="fa-solid fa-flag"></i>
+                            </div>
+                            <h5 class="font-heading font-extrabold text-brand-navy text-lg">2017 - Founding</h5>
+                            <p class="text-sm text-brand-slate">Inaugurated our first modern pre-learning campus in Rewari with 3 activity-focused spaces.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-12 top-0.5 w-8 h-8 rounded-full bg-brand-sunshine flex items-center justify-center text-white text-xs">
+                                <i class="fa-solid fa-puzzle-piece"></i>
+                            </div>
+                            <h5 class="font-heading font-extrabold text-brand-navy text-lg">2019 - Program Innovation</h5>
+                            <p class="text-sm text-brand-slate">Introduced specialized cognitive and tactile development models alongside standard nursery schedules.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-12 top-0.5 w-8 h-8 rounded-full bg-brand-mint flex items-center justify-center text-white text-xs">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <h5 class="font-heading font-extrabold text-brand-navy text-lg">2023 - Digital Playrooms</h5>
+                            <p class="text-sm text-brand-slate">Blended tactile toys with highly interactive digital boards for visual learning sequences.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <!-- Brand col -->
-                <div class="footer-about">
-                    <a href="#" class="logo">
-                        <i class="fa-solid fa-book-open-reader"></i>
-                        Swastik Library
-                    </a>
-                    <p>Dedicated to creating an ecosystem that fosters deep focus, high performance, and outstanding career success.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="#" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    <!-- 3. WHY CHOOSE US (10 Detailed Cards Grid) -->
+    <section id="why-choose" class="py-24 bg-brand-lightBlue relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-node">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-navy mb-4">Why Parents Trust Vatsalya</h2>
+                <div class="w-24 h-2.5 bg-brand-coral mx-auto rounded-full"></div>
+                <p class="mt-4 text-brand-slate max-w-2xl mx-auto font-semibold">We offer carefully structured childhood components making us Rewari's favorite choice.</p>
+            </div>
+
+            <!-- Grid Layout of 10 Distinct Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                
+                <!-- 1. Safe Campus -->
+                <div class="card-glowing rounded-3xl p-6 text-center reveal-node">
+                    <div class="w-16 h-16 mx-auto bg-brand-sky/10 text-brand-sky rounded-2xl flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-navy mb-2">Safe Campus</h3>
+                    <p class="text-xs text-brand-slate">Completely childproof, monitored, secure campus environments.</p>
+                </div>
+
+                <!-- 2. Experienced Teachers -->
+                <div class="card-glowing rounded-3xl p-6 text-center reveal-node" style="transition-delay: 50ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand-sunshine/10 text-brand-sunshine rounded-2xl flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-navy mb-2">Experienced Teachers</h3>
+                    <p class="text-xs text-brand-slate">Nurturing and highly qualified pre-school teachers.</p>
+                </div>
+
+                <!-- 3. Activity Based Learning -->
+                <div class="card-glowing rounded-3xl p-6 text-center reveal-node" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand-mint/10 text-brand-mint rounded-2xl flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-navy mb-2">Activity Learning</h3>
+                    <p class="text-xs text-brand-slate">Practical exploration and multi-sensory tools.</p>
+                </div>
+
+                <!-- 4. Creative Classrooms -->
+                <div class="card-glowing rounded-3xl p-6 text-center reveal-node" style="transition-delay: 150ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand-pink/15 text-brand-pink rounded-2xl flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-navy mb-2">Creative Classrooms</h3>
+                    <p class="text-xs text-brand-slate">Bright, beautifully colored interactive spaces.</p>
+                </div>
+
+                <!-- 5. Fun Learning -->
+                <div class="card-glowing rounded-3xl p-6 text-center reveal-node" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand-lavender/10 text-brand-lavender rounded-2xl flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-navy mb-2">Fun Learning</h3>
+                    <p class="text-xs text-brand-slate">Joyful interactive games and rhythmic play.</p>
+                </div>
+
+                <!-- 6. Child-Friendly Environment -->
+                <div class="card-glowing rounded-3xl p-6 text-center reveal-node" style="transition-delay: 250ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand-coral/10 text-brand-coral rounded-2xl flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-navy mb-2">Child-Friendly</h3>
+                    <p class="text-xs text-brand-slate">Soft edges, clean floors, and playful architecture.</p>
+                </div>
+
+                <!-- 7. Healthy Habits -->
+                <div class="card-glowing rounded-3xl p-6 text-center reveal-node" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand-sky/10 text-brand-sky rounded-2xl flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-apple-whole"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-navy mb-2">Healthy Habits</h3>
+                    <p class="text-xs text-brand-slate">Handwashing lessons, nutritional guidelines, clean rooms.</p>
+                </div>
+
+                <!-- 8. Play-Based Education -->
+                <div class="card-glowing rounded-3xl p-6 text-center reveal-node" style="transition-delay: 350ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand-sunshine/10 text-brand-sunshine rounded-2xl flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-shapes"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-navy mb-2">Play Education</h3>
+                    <p class="text-xs text-brand-slate">Toys and blocks embedded in academic curriculums.</p>
+                </div>
+
+                <!-- 9. Confidence Building -->
+                <div class="card-glowing rounded-3xl p-6 text-center reveal-node" style="transition-delay: 400ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand-mint/10 text-brand-mint rounded-2xl flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-navy mb-2">Confidence</h3>
+                    <p class="text-xs text-brand-slate">Public expression, stage activities, show-and-tell tasks.</p>
+                </div>
+
+                <!-- 10. Low Teacher-Student Ratio -->
+                <div class="card-glowing rounded-3xl p-6 text-center reveal-node" style="transition-delay: 450ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand-pink/15 text-brand-pink rounded-2xl flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-people-roof"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-navy mb-2">Small Ratios</h3>
+                    <p class="text-xs text-brand-slate">Guaranteed 10:1 ratio for optimal safety and supervision.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PROGRAMS SECTION -->
+    <section id="programs" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-node">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-navy mb-4">Tailored Learning Programs</h2>
+                <div class="w-24 h-2.5 bg-brand-sky mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Grid Layout representing Playgroup, Nursery, LKG, UKG -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Playgroup -->
+                <div class="bg-brand-cream border-t-8 border-brand-pink rounded-3xl p-8 shadow-soft hover:-translate-y-2 transition-transform duration-300 reveal-node">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-heading font-extrabold text-brand-navy">Playgroup</h3>
+                        <span class="bg-white text-brand-pink text-xs font-extrabold px-3 py-1 rounded-full border border-brand-pink/20">2 - 3 Yrs</span>
+                    </div>
+                    <div class="text-5xl mb-4">🧸</div>
+                    <h4 class="font-extrabold text-brand-navy mb-2">Primary Milestones:</h4>
+                    <p class="text-sm text-brand-slate mb-6">Fostering visual-spatial growth, fine motor hand controls, basic communication skills, and social sharing exercises.</p>
+                    <ul class="space-y-2.5 text-sm text-brand-navy font-bold">
+                        <li><i class="fa-solid fa-check text-brand-mint mr-2"></i> Sensory Object Fun</li>
+                        <li><i class="fa-solid fa-check text-brand-mint mr-2"></i> Sound & Rhymes play</li>
+                        <li><i class="fa-solid fa-check text-brand-mint mr-2"></i> Soft blocks stacking</li>
+                    </ul>
+                </div>
+
+                <!-- Nursery -->
+                <div class="bg-brand-cream border-t-8 border-brand-sky rounded-3xl p-8 shadow-soft hover:-translate-y-2 transition-transform duration-300 reveal-node" style="transition-delay: 100ms;">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-heading font-extrabold text-brand-navy">Nursery</h3>
+                        <span class="bg-white text-brand-sky text-xs font-extrabold px-3 py-1 rounded-full border border-brand-sky/20">3 - 4 Yrs</span>
+                    </div>
+                    <div class="text-5xl mb-4">🎨</div>
+                    <h4 class="font-extrabold text-brand-navy mb-2">Primary Milestones:</h4>
+                    <p class="text-sm text-brand-slate mb-6">Language structure initiation, physical environment understanding, and color/geometry pattern recognition.</p>
+                    <ul class="space-y-2.5 text-sm text-brand-navy font-bold">
+                        <li><i class="fa-solid fa-check text-brand-mint mr-2"></i> English Alphabet introduction</li>
+                        <li><i class="fa-solid fa-check text-brand-mint mr-2"></i> Interactive Coloring</li>
+                        <li><i class="fa-solid fa-check text-brand-mint mr-2"></i> Basic Number patterns</li>
+                    </ul>
+                </div>
+
+                <!-- LKG -->
+                <div class="bg-brand-cream border-t-8 border-brand-sunshine rounded-3xl p-8 shadow-soft hover:-translate-y-2 transition-transform duration-300 reveal-node" style="transition-delay: 200ms;">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-heading font-extrabold text-brand-navy">LKG</h3>
+                        <span class="bg-white text-brand-sunshine text-xs font-extrabold px-3 py-1 rounded-full border border-brand-sunshine/20">4 - 5 Yrs</span>
+                    </div>
+                    <div class="text-5xl mb-4">📚</div>
+                    <h4 class="font-extrabold text-brand-navy mb-2">Primary Milestones:</h4>
+                    <p class="text-sm text-brand-slate mb-6">Focuses on logical reasoning steps, pre-writing alignments, and basic scientific observation methods.</p>
+                    <ul class="space-y-2.5 text-sm text-brand-navy font-bold">
+                        <li><i class="fa-solid fa-check text-brand-mint mr-2"></i> Phonics pronunciations</li>
+                        <li><i class="fa-solid fa-check text-brand-mint mr-2"></i> Pencil Grip control</li>
+                        <li><i class="fa-solid fa-check text-brand-mint mr-2"></i> Addition concepts</li>
+                    </ul>
+                </div>
+
+                <!-- UKG -->
+                <div class="bg-brand-cream border-t-8 border-brand-mint rounded-3xl p-8 shadow-soft hover:-translate-y-2 transition-transform duration-300 reveal-node" style="transition-delay: 300ms;">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-heading font-extrabold text-brand-navy">UKG</h3>
+                        <span class="bg-white text-brand-mint text-xs font-extrabold px-3 py-1 rounded-full border border-brand-mint/20">5 - 6 Yrs</span>
+                    </div>
+                    <div class="text-5xl mb-4">🎓</div>
+                    <h4 class="font-extrabold text-brand-navy mb-2">Primary Milestones:</h4>
+                    <p class="text-sm text-brand-slate mb-6">Seamless transition to primary schools. Advanced cognitive retention, sentence building, and math operations.</p>
+                    <ul class="space-y-2.5 text-sm text-brand-navy font-bold">
+                        <li><i class="fa-solid fa-check text-brand-mint mr-2"></i> Read short sentences</li>
+                        <li><i class="fa-solid fa-check text-brand-mint mr-2"></i> Environmental Sciences</li>
+                        <li><i class="fa-solid fa-check text-brand-mint mr-2"></i> Story curation skills</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. DAILY ACTIVITIES TIMELINE -->
+    <section id="activities" class="py-24 bg-brand-cream relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal-node">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-navy mb-4">Our Delightful Day Routine</h2>
+                <div class="w-24 h-2.5 bg-brand-mint mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Interactive Timeline Component -->
+            <div class="relative activity-timeline py-8">
+                
+                <!-- Item 1: Morning Prayer -->
+                <div class="relative z-10 mb-16 flex justify-between items-center w-full reveal-node">
+                    <div class="hidden md:block w-5/12 text-right pr-12">
+                        <span class="text-brand-sky font-extrabold text-sm block tracking-widest">08:00 AM - 08:30 AM</span>
+                        <h3 class="text-2xl font-heading font-extrabold text-brand-navy">Morning Prayer</h3>
+                        <p class="text-sm text-brand-slate mt-2">Setting a calm, aligned tone with meditation and group assembly.</p>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-14 h-14 bg-brand-sky rounded-full border-4 border-white shadow-soft flex items-center justify-center text-white text-xl timeline-badge z-20">
+                        <i class="fa-solid fa-sun animate-pulse"></i>
+                    </div>
+                    <div class="w-full md:w-5/12 pl-12 timeline-card">
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-brand-sky/20">
+                            <span class="md:hidden text-brand-sky font-extrabold text-xs block mb-1">08:00 AM - 08:30 AM</span>
+                            <h4 class="md:hidden font-heading font-extrabold text-brand-navy text-xl mb-2">Morning Prayer</h4>
+                            <div class="h-36 overflow-hidden rounded-2xl bg-brand-lightBlue">
+                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80" alt="Morning Prayer Assembly" class="w-full h-full object-cover">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Navigation col -->
-                <div>
-                    <h4 class="footer-links-title">Quick Links</h4>
-                    <div class="footer-links-list">
-                        <a href="#hero"><i class="fa-solid fa-chevron-right"></i> Home</a>
-                        <a href="#about"><i class="fa-solid fa-chevron-right"></i> About Us</a>
-                        <a href="#facilities"><i class="fa-solid fa-chevron-right"></i> Facilities</a>
-                        <a href="#why-choose"><i class="fa-solid fa-chevron-right"></i> Why Choose Us</a>
-                        <a href="#info"><i class="fa-solid fa-chevron-right"></i> Timings</a>
-                        <a href="#contact"><i class="fa-solid fa-chevron-right"></i> Contact Us</a>
+                <!-- Item 2: Circle Time -->
+                <div class="relative z-10 mb-16 flex justify-between items-center w-full flex-row-reverse reveal-node">
+                    <div class="hidden md:block w-5/12 text-left pl-12">
+                        <span class="text-brand-coral font-extrabold text-sm block tracking-widest">08:30 AM - 09:30 AM</span>
+                        <h3 class="text-2xl font-heading font-extrabold text-brand-navy">Circle Time & Storytelling</h3>
+                        <p class="text-sm text-brand-slate mt-2">Sharing and interactive expression helper games.</p>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-14 h-14 bg-brand-coral rounded-full border-4 border-white shadow-soft flex items-center justify-center text-white text-xl timeline-badge z-20">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="w-full md:w-5/12 pr-12 timeline-card">
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-brand-coral/20">
+                            <span class="md:hidden text-brand-coral font-extrabold text-xs block mb-1">08:30 AM - 09:30 AM</span>
+                            <h4 class="md:hidden font-heading font-extrabold text-brand-navy text-xl mb-2">Circle Time & Storytelling</h4>
+                            <div class="h-36 overflow-hidden rounded-2xl bg-brand-cream flex items-center justify-center text-5xl">
+                                🗣️🎨🧸
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Contact details col -->
-                <div>
-                    <h4 class="footer-links-title">Get in Touch</h4>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Back Side Yaduvanshi Hospital, 281R, Maharana Pratap Chowk, Model Town, Rewari, Haryana 123401</span>
+                <!-- Item 3: Creative Art & Drawing -->
+                <div class="relative z-10 mb-16 flex justify-between items-center w-full reveal-node">
+                    <div class="hidden md:block w-5/12 text-right pr-12">
+                        <span class="text-brand-sunshine font-extrabold text-sm block tracking-widest">09:30 AM - 10:30 AM</span>
+                        <h3 class="text-2xl font-heading font-extrabold text-brand-navy">Creative Art & Drawing</h3>
+                        <p class="text-sm text-brand-slate mt-2">Opening the creative portals. Guided sketching, paper crafts, and clay modeling.</p>
                     </div>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-phone"></i>
-                        <span>+91 98765 43210</span>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-14 h-14 bg-brand-sunshine rounded-full border-4 border-white shadow-soft flex items-center justify-center text-white text-xl timeline-badge z-20">
+                        <i class="fa-solid fa-paintbrush"></i>
                     </div>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-clock"></i>
-                        <span>Mon-Sat: 8 AM - 9 PM<br>Sun: 8 AM - 8 PM</span>
+                    <div class="w-full md:w-5/12 pl-12 timeline-card">
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-brand-sunshine/20">
+                            <span class="md:hidden text-brand-sunshine font-extrabold text-xs block mb-1">09:30 AM - 10:30 AM</span>
+                            <h4 class="md:hidden font-heading font-extrabold text-brand-navy text-xl mb-2">Creative Art & Drawing</h4>
+                            <div class="h-36 overflow-hidden rounded-2xl bg-brand-cream">
+                                <img src="https://images.unsplash.com/photo-1513569771920-c9e1d31714af?auto=format&fit=crop&w=400&q=80" alt="Preschool drawing session" class="w-full h-full object-cover">
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <!-- Item 4: Snack Break -->
+                <div class="relative z-10 mb-16 flex justify-between items-center w-full flex-row-reverse reveal-node">
+                    <div class="hidden md:block w-5/12 text-left pl-12">
+                        <span class="text-brand-mint font-extrabold text-sm block tracking-widest">10:30 AM - 11:00 AM</span>
+                        <h3 class="text-2xl font-heading font-extrabold text-brand-navy">Healthy Snack Circle</h3>
+                        <p class="text-sm text-brand-slate mt-2">Developing independence. Learning hygiene and hand washing before meals.</p>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-14 h-14 bg-brand-mint rounded-full border-4 border-white shadow-soft flex items-center justify-center text-white text-xl timeline-badge z-20">
+                        <i class="fa-solid fa-apple-whole"></i>
+                    </div>
+                    <div class="w-full md:w-5/12 pr-12 timeline-card">
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-brand-mint/20">
+                            <span class="md:hidden text-brand-mint font-extrabold text-xs block mb-1">10:30 AM - 11:00 AM</span>
+                            <h4 class="md:hidden font-heading font-extrabold text-brand-navy text-xl mb-2">Healthy Snack Circle</h4>
+                            <div class="h-36 overflow-hidden rounded-2xl bg-brand-lightBlue flex items-center justify-center text-5xl">
+                                🍇🥪🥛
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Playground Recess -->
+                <div class="relative z-10 flex justify-between items-center w-full reveal-node">
+                    <div class="hidden md:block w-5/12 text-right pr-12">
+                        <span class="text-brand-lavender font-extrabold text-sm block tracking-widest">11:00 AM - 12:30 PM</span>
+                        <h3 class="text-2xl font-heading font-extrabold text-brand-navy">Outdoor Play & Exploration</h3>
+                        <p class="text-sm text-brand-slate mt-2">Gross motor activities. Slides, balance beams, swings and physical play coordinators.</p>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-14 h-14 bg-brand-lavender rounded-full border-4 border-white shadow-soft flex items-center justify-center text-white text-xl timeline-badge z-20">
+                        <i class="fa-solid fa-gamepad animate-bounce-soft"></i>
+                    </div>
+                    <div class="w-full md:w-5/12 pl-12 timeline-card">
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-brand-lavender/20">
+                            <span class="md:hidden text-brand-lavender font-extrabold text-xs block mb-1">11:00 AM - 12:30 PM</span>
+                            <h4 class="md:hidden font-heading font-extrabold text-brand-navy text-xl mb-2">Outdoor Play & Exploration</h4>
+                            <div class="h-36 overflow-hidden rounded-2xl bg-brand-cream">
+                                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=400&q=80" alt="Playground recess" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. INTERACTIVE LEARNING AREAS -->
+    <section class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-node">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-navy mb-4">Core Interactive Learning Areas</h2>
+                <div class="w-24 h-2.5 bg-brand-lavender mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Interative Grid mapping the curriculum components -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Alphabet card -->
+                <div onclick="revealConcept('alphabet')" class="p-6 rounded-3xl border-2 border-brand-pink/20 bg-brand-pink/5 hover:bg-brand-pink/20 transition-all cursor-pointer group text-center select-none shadow-sm">
+                    <span class="text-5xl block mb-4 group-hover:scale-110 transition-transform">🔤</span>
+                    <h3 class="text-xl font-heading font-extrabold text-brand-navy">Phonics & Alphabets</h3>
+                    <p class="text-xs text-brand-slate mt-2">Interactive alphabet card blocks and sound association tools.</p>
+                </div>
+                <!-- Numbers Card -->
+                <div onclick="revealConcept('numbers')" class="p-6 rounded-3xl border-2 border-brand-sky/20 bg-brand-sky/5 hover:bg-brand-sky/20 transition-all cursor-pointer group text-center select-none shadow-sm">
+                    <span class="text-5xl block mb-4 group-hover:scale-110 transition-transform">🔢</span>
+                    <h3 class="text-xl font-heading font-extrabold text-brand-navy">Numbers & Patterns</h3>
+                    <p class="text-xs text-brand-slate mt-2">Playful counting beads and visual geometry puzzles.</p>
+                </div>
+                <!-- Drawing & Craft Card -->
+                <div onclick="revealConcept('craft')" class="p-6 rounded-3xl border-2 border-brand-sunshine/20 bg-brand-sunshine/5 hover:bg-brand-sunshine/20 transition-all cursor-pointer group text-center select-none shadow-sm">
+                    <span class="text-5xl block mb-4 group-hover:scale-110 transition-transform">✂️</span>
+                    <h3 class="text-xl font-heading font-extrabold text-brand-navy">Craft & Coloring</h3>
+                    <p class="text-xs text-brand-slate mt-2">Unleashing spatial creativity with interactive shapes.</p>
+                </div>
+                <!-- Social & Communication Card -->
+                <div onclick="revealConcept('social')" class="p-6 rounded-3xl border-2 border-brand-mint/20 bg-brand-mint/5 hover:bg-brand-mint/20 transition-all cursor-pointer group text-center select-none shadow-sm">
+                    <span class="text-5xl block mb-4 group-hover:scale-110 transition-transform">🤝</span>
+                    <h3 class="text-xl font-heading font-extrabold text-brand-navy">Social Integration</h3>
+                    <p class="text-xs text-brand-slate mt-2">Developing kindness, sharing habits, and vocal expression.</p>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <div class="footer-copyright">
-                    &copy; 2026 Swastik Library. All Rights Reserved.
+            <!-- Concept Interactive Display Box -->
+            <div class="mt-8 p-8 bg-brand-lightBlue rounded-3xl border border-brand-sky/30 text-center relative overflow-hidden max-w-2xl mx-auto" id="concept-display">
+                <p class="text-lg font-bold text-brand-navy mb-2" id="concept-title">Tap on any Learning Card above!</p>
+                <p class="text-sm text-brand-slate" id="concept-desc">Learn how Vatsalya builds core milestones at each stage.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FACILITIES SECTION (Icon Cards Layout) -->
+    <section id="facilities" class="py-24 bg-brand-lightBlue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-node">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-navy mb-4">First-Rate Campus Facilities</h2>
+                <div class="w-24 h-2.5 bg-brand-pink mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-center">
+                
+                <div class="p-6 bg-white rounded-3xl shadow-sm hover:shadow-card transition-all reveal-node">
+                    <span class="text-4xl block mb-3">🎨</span>
+                    <h3 class="font-heading font-extrabold text-brand-navy text-lg">Interactive Playroom</h3>
+                    <p class="text-xs text-brand-slate mt-1">Spacious tactile playroom matching pre-primary protocols.</p>
                 </div>
-                <div class="footer-bottom-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                
+                <div class="p-6 bg-white rounded-3xl shadow-sm hover:shadow-card transition-all reveal-node" style="transition-delay: 50ms;">
+                    <span class="text-4xl block mb-3">🛡️</span>
+                    <h3 class="font-heading font-extrabold text-brand-navy text-lg">CCTV Monitoring</h3>
+                    <p class="text-xs text-brand-slate mt-1">Live updates and 100% video-recorded security walls.</p>
                 </div>
+                
+                <div class="p-6 bg-white rounded-3xl shadow-sm hover:shadow-card transition-all reveal-node" style="transition-delay: 100ms;">
+                    <span class="text-4xl block mb-3">🩺</span>
+                    <h3 class="font-heading font-extrabold text-brand-navy text-lg">First Aid & Checkups</h3>
+                    <p class="text-xs text-brand-slate mt-1">Trained nurses on campus for child safety measures.</p>
+                </div>
+
+                <div class="p-6 bg-white rounded-3xl shadow-sm hover:shadow-card transition-all reveal-node" style="transition-delay: 150ms;">
+                    <span class="text-4xl block mb-3">🧼</span>
+                    <h3 class="font-heading font-extrabold text-brand-navy text-lg">Hygiene Washrooms</h3>
+                    <p class="text-xs text-brand-slate mt-1">Specialized toddler-friendly layout washrooms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. GALLERY (Masonry Layout with Lightbox Pop) -->
+    <section id="gallery" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-node">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-navy mb-4">Glimpses of Happiness</h2>
+                <div class="w-24 h-2.5 bg-brand-coral mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Masonry Grid with Zoom effects -->
+            <div class="masonry-gallery reveal-node">
+                
+                <!-- Card 1 -->
+                <div class="masonry-item relative group overflow-hidden rounded-3xl border-4 border-white shadow-soft cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80" alt="Happy Childhood Classroom Vatsalya" class="w-full h-auto object-cover transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-brand-navy/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="bg-white/85 text-brand-navy p-3 rounded-full text-lg"><i class="fa-solid fa-expand"></i></span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="masonry-item relative group overflow-hidden rounded-3xl border-4 border-white shadow-soft cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1513569771920-c9e1d31714af?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1513569771920-c9e1d31714af?auto=format&fit=crop&w=600&q=80" alt="Preschool activities vatsalya rewari" class="w-full h-auto object-cover transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-brand-navy/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="bg-white/85 text-brand-navy p-3 rounded-full text-lg"><i class="fa-solid fa-expand"></i></span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="masonry-item relative group overflow-hidden rounded-3xl border-4 border-white shadow-soft cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1602052793312-b99c2a9ee797?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1602052793312-b99c2a9ee797?auto=format&fit=crop&w=600&q=80" alt="Stacking blocks and cognitive play" class="w-full h-auto object-cover transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-brand-navy/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="bg-white/85 text-brand-navy p-3 rounded-full text-lg"><i class="fa-solid fa-expand"></i></span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="masonry-item relative group overflow-hidden rounded-3xl border-4 border-white shadow-soft cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1587691592099-24045742c181?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1587691592099-24045742c181?auto=format&fit=crop&w=600&q=80" alt="Outdoor playground activities" class="w-full h-auto object-cover transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-brand-navy/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="bg-white/85 text-brand-navy p-3 rounded-full text-lg"><i class="fa-solid fa-expand"></i></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. TESTIMONIALS (Custom JavaScript Touch-Slider) -->
+    <section class="py-24 bg-brand-cream overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16 reveal-node">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-navy mb-4">What Our Happy Parents Say</h2>
+                <div class="w-24 h-2.5 bg-brand-sunshine mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Slider Wrapper container -->
+            <div class="relative overflow-hidden min-h-[350px] flex items-center">
+                <!-- Testimonial Items -->
+                <div class="w-full transition-all duration-500 relative flex justify-center items-center" id="testimonial-slider">
+                    
+                    <!-- Card 1 -->
+                    <div class="testimonial-item w-full flex-shrink-0 flex flex-col items-center text-center px-4 md:px-12 transition-all duration-500">
+                        <div class="relative max-w-2xl bg-white p-8 md:p-12 rounded-[40px] shadow-float border-2 border-brand-sky/20">
+                            <!-- Large Cute Quotation Mark -->
+                            <span class="absolute -top-6 left-10 text-6xl text-brand-sky opacity-20"><i class="fa-solid fa-quote-left"></i></span>
+                            <div class="flex justify-center text-brand-sunshine mb-4 text-lg">
+                                <i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-lg text-brand-navy font-bold leading-relaxed">
+                                "The level of warmth and emotional safety at Vatsalya Play School has been incredible. My daughter learned basic alphabet sounds, patterns, and sharing in just three months. Rewari's safest spot!"
+                            </p>
+                            <span class="block mt-6 text-brand-coral font-extrabold uppercase text-sm tracking-widest">- Neha Sharma, Rewari Parent</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 (Will be structured with JS dynamic slide swap) -->
+                    <div class="testimonial-item w-full flex-shrink-0 flex flex-col items-center text-center px-4 md:px-12 transition-all duration-500 hidden">
+                        <div class="relative max-w-2xl bg-white p-8 md:p-12 rounded-[40px] shadow-float border-2 border-brand-coral/20">
+                            <span class="absolute -top-6 left-10 text-6xl text-brand-coral opacity-20"><i class="fa-solid fa-quote-left"></i></span>
+                            <div class="flex justify-center text-brand-sunshine mb-4 text-lg">
+                                <i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-lg text-brand-navy font-bold leading-relaxed">
+                                "Vatsalya Play School delivers what they promise. Extremely friendly pre-school guides. Their hygiene protocols are perfect, making them our top recommendation."
+                            </p>
+                            <span class="block mt-6 text-brand-sky font-extrabold uppercase text-sm tracking-widest">- Vijay Rao, Sector-4 Resident</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Slide Navigation Buttons -->
+            <div class="flex justify-center space-x-4 mt-8">
+                <button onclick="prevSlide()" class="w-12 h-12 rounded-full bg-white hover:bg-brand-sky hover:text-white text-brand-navy transition-colors flex items-center justify-center shadow-sm" aria-label="Previous Slide">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button onclick="nextSlide()" class="w-12 h-12 rounded-full bg-white hover:bg-brand-sky hover:text-white text-brand-navy transition-colors flex items-center justify-center shadow-sm" aria-label="Next Slide">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. CONTACT SECTION -->
+    <section id="contact" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-cream border-2 border-brand-sky/20 rounded-[40px] p-8 md:p-16 shadow-soft reveal-node">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    
+                    <!-- Contact details -->
+                    <div>
+                        <h2 class="text-4xl font-heading font-extrabold text-brand-navy mb-4">Connect With Our Team</h2>
+                        <div class="w-16 h-2 bg-brand-sky rounded-full mb-8"></div>
+                        <p class="text-lg text-brand-slate font-semibold mb-8">We are happy to answer your questions regarding admissions, fees structures, and transport protocols.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-brand-sky/20 text-brand-sky rounded-2xl flex items-center justify-center text-xl mr-4 flex-shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-heading font-extrabold text-brand-navy text-lg">Our Location</h4>
+                                    <p class="text-sm text-brand-slate">Sector-4, Near Vijay Rao's House, Krishna Nagar, Rewari, Haryana 123401</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-brand-sunshine/20 text-brand-sunshine rounded-2xl flex items-center justify-center text-xl mr-4 flex-shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-heading font-extrabold text-brand-navy text-lg">Contact Number</h4>
+                                    <p class="text-sm text-brand-slate">+91 98123 24800</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-brand-mint/20 text-brand-mint rounded-2xl flex items-center justify-center text-xl mr-4 flex-shrink-0">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-heading font-extrabold text-brand-navy text-lg">Working Hours</h4>
+                                    <p class="text-sm text-brand-slate">Monday – Saturday: 8:00 AM – 2:00 PM<br><span class="text-brand-coral font-bold">Sunday: Closed</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Integration Area -->
+                    <div class="h-80 lg:h-auto rounded-3xl overflow-hidden border-4 border-white shadow-float relative bg-gray-100 min-h-[350px]">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3516.4862744955894!2d76.6203565!3d28.2001552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d4f04fa3b021f%3A0x1193575ef47d5d02!2sKrishna%20Nagar%2C%20Rewari%2C%20Haryana%20123401!5e0!3m2!1sen!2sin!4v1689800000000" 
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="absolute inset-0" title="Vatsalya Play School Rewari Map">
+                        </iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. FOOTER -->
+    <footer class="bg-brand-navy text-white pt-20 pb-8 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                
+                <!-- Quick Brand Pitch -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-white text-brand-sky rounded-2xl flex items-center justify-center text-xl mr-3 font-extrabold shadow-soft">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <span class="font-heading font-extrabold text-2xl tracking-tight">Vatsalya Play School</span>
+                    </div>
+                    <p class="text-brand-slate text-sm max-w-md text-gray-400 mb-6">
+                        Nurturing childhood curious patterns with custom-curated play schedules. Sector-4, Rewari, Haryana.
+                    </p>
+                    <div class="flex space-x-3">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-brand-sky hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-brand-pink hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-brand-sunshine hover:text-white transition-all"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Footer Quicklinks -->
+                <div>
+                    <h4 class="font-heading font-bold text-xl mb-4 text-brand-sunshine">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#programs" class="hover:text-white transition-colors">Our Programs</a></li>
+                        <li><a href="#activities" class="hover:text-white transition-colors">Activities Schedule</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition-colors">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <!-- Footer Contact Info -->
+                <div>
+                    <h4 class="font-heading font-bold text-xl mb-4 text-brand-mint">Contact Us</h4>
+                    <p class="text-sm text-gray-400 mb-2"><i class="fa-solid fa-phone mr-2 text-brand-mint"></i> +91 98123 24800</p>
+                    <p class="text-sm text-gray-400"><i class="fa-solid fa-envelope mr-2 text-brand-mint"></i> info@vatsalyarewari.com</p>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2026 Vatsalya Play School. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- SCROLL TO TOP BUTTON -->
-    <button class="scroll-to-top" id="scroll-top-btn" aria-label="Scroll to top of page">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
+    <!-- INTERACTIVE LIGHTBOX MODAL CONTAINER -->
+    <div id="gallery-lightbox" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl hover:text-brand-coral transition-colors" aria-label="Close Lightbox">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="lightbox-image" src="" alt="Vatsalya Play School Enlarged View" class="max-w-full max-h-[85vh] rounded-2xl shadow-float">
+    </div>
 
-    <!-- VANILLA JAVASCRIPT LOGIC -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    <!-- ENROLLMENT / ADMISSION INQUIRY MODAL -->
+    <div id="enrollment-modal" class="fixed inset-0 bg-brand-navy/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-[40px] border-4 border-white max-w-lg w-full p-8 shadow-float relative transform scale-95 transition-transform duration-300" id="modal-box">
             
-            // --- STICKY & ACTIVE NAVIGATION SYSTEM ---
-            const navbar = document.getElementById('navbar');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('section');
-            const scrollTopBtn = document.getElementById('scroll-top-btn');
+            <button onclick="closeEnrollmentModal()" class="absolute top-6 right-6 text-brand-navy text-2xl hover:text-brand-coral transition-colors" aria-label="Close Modal">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <span class="text-5xl block">🎒</span>
+                <h3 class="text-3xl font-heading font-extrabold text-brand-navy mt-2">Join Vatsalya Family</h3>
+                <p class="text-xs text-brand-slate font-bold uppercase tracking-wider">Admission inquiry / Schedule a campus visit</p>
+            </div>
 
-            window.addEventListener('scroll', () => {
-                const scrollPos = window.scrollY;
+            <!-- Admission Form -->
+            <form id="admission-form" onsubmit="submitAdmission(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-brand-navy uppercase mb-1" for="parent-name">Parent Name</label>
+                    <input type="text" id="parent-name" required class="w-full px-4 py-3 rounded-2xl bg-brand-cream border border-brand-sky/20 focus:outline-none focus:border-brand-sky font-semibold text-brand-navy placeholder-brand-slate/40" placeholder="Enter full name">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-brand-navy uppercase mb-1" for="child-name">Child Name</label>
+                        <input type="text" id="child-name" required class="w-full px-4 py-3 rounded-2xl bg-brand-cream border border-brand-sky/20 focus:outline-none focus:border-brand-sky font-semibold text-brand-navy placeholder-brand-slate/40" placeholder="Child's name">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-brand-navy uppercase mb-1" for="child-age">Child Age</label>
+                        <select id="child-age" required class="w-full px-4 py-3 rounded-2xl bg-brand-cream border border-brand-sky/20 focus:outline-none focus:border-brand-sky font-semibold text-brand-navy">
+                            <option value="2-3">2 - 3 Years (Playgroup)</option>
+                            <option value="3-4">3 - 4 Years (Nursery)</option>
+                            <option value="4-5">4 - 5 Years (LKG)</option>
+                            <option value="5-6">5 - 6 Years (UKG)</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-brand-navy uppercase mb-1" for="phone-number">Parent Contact Phone</label>
+                    <input type="tel" id="phone-number" required pattern="[0-9]{10}" class="w-full px-4 py-3 rounded-2xl bg-brand-cream border border-brand-sky/20 focus:outline-none focus:border-brand-sky font-semibold text-brand-navy placeholder-brand-slate/40" placeholder="10 Digit phone number">
+                </div>
+                <button type="submit" class="w-full bg-brand-sky hover:bg-brand-navy text-white py-4 rounded-full font-extrabold text-lg shadow-card hover:shadow-float transform hover:-translate-y-0.5 transition-all">
+                    Submit Inquiry Form
+                </button>
+            </form>
+        </div>
+    </div>
 
-                // Toggle sticky styling
-                if (scrollPos > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-
-                // Show/hide scroll to top button
-                if (scrollPos > 500) {
-                    scrollTopBtn.classList.add('show');
-                } else {
-                    scrollTopBtn.classList.remove('show');
-                }
-
-                // Dynamic Nav Active Class Highlighting
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 120;
-                    const sectionHeight = section.offsetHeight;
-                    const sectionId = section.getAttribute('id');
-
-                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${sectionId}`) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            });
-
-            // --- MOBILE NAVIGATION BAR DRAWER ---
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const navMenu = document.getElementById('nav-menu');
-
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenuBtn.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            });
-
-            // Close mobile menu when a navigation item is clicked
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenuBtn.classList.remove('active');
-                    navMenu.classList.remove('active');
-                });
-            });
-
-            // --- INTERACTIVE CONTACT FORM SUBMISSION ---
-            const contactForm = document.getElementById('contactForm');
-            const successBox = document.getElementById('form-success-box');
-
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                // Simple simulated sending visual response
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending Details...';
-
-                setTimeout(() => {
-                    // Success callback response
-                    submitBtn.innerHTML = 'Sent Successfully!';
-                    successBox.style.display = 'block';
-                    contactForm.reset();
-
-                    // Re-enable form after user feedback timeout
-                    setTimeout(() => {
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalText;
-                        successBox.style.display = 'none';
-                    }, 5000);
-
-                }, 1500);
-            });
-
-            // --- SCROLL TO TOP EXECUTION ---
-            scrollTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
+    <!-- MAIN JAVASCRIPT ANIMATIONS & INTERACTIONS -->
+    <script>
+        // 1. Loader screen removal sequence
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 600);
         });
+
+        // 2. Sparkle Particle Track generator
+        let sparkleEnabled = !window.matchMedia("(pointer: coarse)").matches; // Disabled on mobile touch systems
+        if (sparkleEnabled) {
+            document.addEventListener('mousemove', (e) => {
+                if (Math.random() > 0.85) { // Throttle performance rate
+                    createSparkle(e.clientX, e.clientY);
+                }
+            });
+        }
+
+        function createSparkle(x, y) {
+            const colors = ['#6EC6FF', '#FFD54F', '#FF8A65', '#81C784', '#B39DDB', '#F8BBD0'];
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Random direction drift
+            const driftX = (Math.random() - 0.5) * 50;
+            const driftY = (Math.random() - 0.5) * 50;
+            sparkle.style.setProperty('--drift-x', driftX + 'px');
+            sparkle.style.setProperty('--drift-y', driftY + 'px');
+            
+            document.body.appendChild(sparkle);
+            setTimeout(() => {
+                sparkle.remove();
+            }, 800);
+        }
+
+        // 3. Floating Navbar Drawer toggler
+        const hamburger = document.getElementById('hamburger');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+
+        hamburger.addEventListener('click', () => {
+            toggleDrawer();
+        });
+
+        function toggleDrawer() {
+            mobileDrawer.classList.toggle('hidden');
+            if (mobileDrawer.classList.contains('hidden')) {
+                hamburgerIcon.className = 'fa-solid fa-bars';
+            } else {
+                hamburgerIcon.className = 'fa-solid fa-xmark';
+            }
+        }
+
+        // 4. Scroll Reveal Engine for elements
+        const scrollNodes = document.querySelectorAll('.reveal-node');
+        const revealConfig = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealConfig);
+
+        scrollNodes.forEach(node => {
+            revealObserver.observe(node);
+        });
+
+        // 5. Concept interactive helper boxes
+        const concepts = {
+            alphabet: {
+                title: "🔤 Phonics & Letter Association",
+                desc: "We utilize multi-sensory physical letter blocks associated with visual, colorful patterns matching native sounds."
+            },
+            numbers: {
+                title: "🔢 Patterns & Basic Numeracy",
+                desc: "Children explore sequence stackers, digital counting toys, and shape patterns to map initial cognitive logic."
+            },
+            craft: {
+                title: "✂️ Creative Craft & Coloring",
+                desc: "Toddlers practice spatial hand motor skills via simple paper crafting, uninhibited easel paint, and clean safe modeling clay."
+            },
+            social: {
+                title: "🤝 Empathy & Expressive Speech",
+                desc: "Interactive circle assemblies focused heavily on active peer listening, clean classroom hygiene sharing, and kind behaviors."
+            }
+        };
+
+        function revealConcept(id) {
+            const target = concepts[id];
+            const displayBox = document.getElementById('concept-display');
+            const title = document.getElementById('concept-title');
+            const desc = document.getElementById('concept-desc');
+
+            // Quick fade trigger
+            displayBox.style.opacity = '0.3';
+            setTimeout(() => {
+                title.innerText = target.title;
+                desc.innerText = target.desc;
+                displayBox.style.opacity = '1';
+            }, 200);
+        }
+
+        // 6. Gallery Lightbox Handler
+        const lightbox = document.getElementById('gallery-lightbox');
+        const lightboxImg = document.getElementById('lightbox-image');
+
+        function openLightbox(url) {
+            lightboxImg.src = url;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+        }
+
+        // 7. Touch-Responsive Testimonial Slider Mechanics
+        let activeSlideIndex = 0;
+        const slides = document.querySelectorAll('.testimonial-item');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('hidden');
+                } else {
+                    slide.classList.add('hidden');
+                }
+            });
+        }
+
+        function nextSlide() {
+            activeSlideIndex = (activeSlideIndex + 1) % slides.length;
+            showSlide(activeSlideIndex);
+        }
+
+        function prevSlide() {
+            activeSlideIndex = (activeSlideIndex - 1 + slides.length) % slides.length;
+            showSlide(activeSlideIndex);
+        }
+
+        // Auto rotation interval for testimonials
+        setInterval(nextSlide, 7000);
+
+        // 8. Custom Modal Enrollment & Confetti Burst System
+        const enrollmentModal = document.getElementById('enrollment-modal');
+        const modalBox = document.getElementById('modal-box');
+
+        function openEnrollmentModal() {
+            enrollmentModal.classList.remove('hidden');
+            enrollmentModal.classList.add('flex');
+            setTimeout(() => {
+                modalBox.classList.remove('scale-95');
+                modalBox.classList.add('scale-100');
+            }, 50);
+        }
+
+        function closeEnrollmentModal() {
+            modalBox.classList.remove('scale-100');
+            modalBox.classList.add('scale-95');
+            setTimeout(() => {
+                enrollmentModal.classList.add('hidden');
+                enrollmentModal.classList.remove('flex');
+            }, 150);
+        }
+
+        // Confetti Generator Mechanics on submission
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let confetti = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class ConfettiParticle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -canvas.height;
+                this.size = Math.random() * 8 + 6;
+                this.color = ['#6EC6FF', '#FFD54F', '#FF8A65', '#81C784', '#B39DDB', '#F8BBD0'][Math.floor(Math.random() * 6)];
+                this.speed = Math.random() * 4 + 4;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 4 - 2;
+            }
+
+            update() {
+                this.y += this.speed;
+                this.rotation += this.rotationSpeed;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        function triggerConfetti() {
+            confetti = [];
+            for (let i = 0; i < 150; i++) {
+                confetti.push(new ConfettiParticle());
+            }
+            animateConfetti();
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let active = false;
+            confetti.forEach((p) => {
+                p.update();
+                p.draw();
+                if (p.y < canvas.height) active = true;
+            });
+            if (active) {
+                requestAnimationFrame(animateConfetti);
+            } else {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        function submitAdmission(event) {
+            event.preventDefault();
+            const parentName = document.getElementById('parent-name').value;
+            const childName = document.getElementById('child-name').value;
+            
+            // Closing modal safely
+            closeEnrollmentModal();
+            
+            // Celebrating admission with confetti explosion
+            triggerConfetti();
+            
+            // Custom micro-notification system
+            const alertBox = document.createElement('div');
+            alertBox.className = 'fixed bottom-10 right-10 bg-brand-navy text-white px-6 py-4 rounded-3xl shadow-float z-50 flex items-center space-x-3 border-2 border-brand-sunshine animate-bounce-soft';
+            alertBox.innerHTML = `<span>🎉</span> <p class="text-sm font-bold">Awesome, ${parentName}! Admissions application for ${childName} sent successfully!</p>`;
+            document.body.appendChild(alertBox);
+            
+            setTimeout(() => {
+                alertBox.remove();
+            }, 5500);
+
+            // Clean up inputs
+            document.getElementById('admission-form').reset();
+        }
     </script>
 </body>
 </html>
